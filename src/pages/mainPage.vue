@@ -1,44 +1,64 @@
 <template>
-        
-<!-- <h1 class="text-yellow-700">sadad</h1> -->
 <section class=" m-auto">
-    <div class="w-full h-full grid grid-cols-2 sm:grid-cols-2 gap-4 p-4 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
-        <Cards/>
-        <Cards/>
-        <Cards/>
-        <Cards/>
-        <Cards/>
-        <Cards/>
-        <Cards/>
-        <Cards/>
-
+    <nav class="flex bg-slate-300 gap-10 font-medium text-xl cursor-pointer select-none justify-center p-2">
+        <!-- <ul class="bg-slate-400 p-2 rounded-md" @click="activeComponent = 'Cards'">CARD</ul>
+        <ul class="bg-slate-400 p-2 rounded-md" @click="activeComponent = 'login'">LOGIN</ul> -->
+        <!-- <button class="bg-slate-400 p-2 rounded-md">add product</button> -->
+        <!-- <div>
+    <AddProductForm @add-product="addProduct" />
+    <div class="product-list">
+      <ProductCard
+        v-for="(product, index) in products"
+        :key="index"
+        :img="product.img"
+        :name="product.name"
+        :description="product.description"
+        :price="product.price"
+      />
     </div>
+  </div> -->
+    </nav>
+    <cards/>
+    <!-- <addProduct/>
+    <ProductCard/> -->
 </section>
+<!-- <Cards/>
+<login/> -->
+<!-- <component :is="activeComponent"> </component> -->
 </template>
 <script>
-import Cards from "../components/card.vue";
+import Cards from "../pages/cardsPage.vue";
+// import addProduct from "@/components/addProduct.vue";
+// import ProductCard from "@/components/productCard.vue";
+// import login from "../components/login.vue";
+// import { ref } from "vue";
 import { defineComponent } from "vue";
+
 export default defineComponent({
     components: {
-        Cards
+        Cards,
+        // addProduct,
+        // ProductCard,
+        // login
     },
-//     props: {
-//     show: {
-//       type: Boolean,
-//       required: true
+//     setup(){
+//         const products = ref([]);
+
+// const addProduct = (newProduct) => {
+//   products.value.push(newProduct);
+// };
+
+// return {
+//   products,
+//   addProduct,
+// };
 //     }
-//   },
-//   setup(props, { emit }) {
-//     const { show } = toRefs(props);
+    // setup(){
+    //     const activeComponent = ref();
 
-//     const closeModal = () => {
-//       emit('close');
-//     };
-
-//     return {
-//       show,
-//       closeModal
-//     };
-//   }
+    // return {
+    //     activeComponent
+    // }
+    
 })
 </script>

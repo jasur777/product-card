@@ -47,6 +47,5 @@ export default {
 <style>
 .b{
     box-shadow: 0 10px 40px 10px rgba(134, 154, 184, .175);
-    /* text-align: ; */
 }
 </style>
