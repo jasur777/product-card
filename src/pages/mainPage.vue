@@ -3,7 +3,12 @@
     <nav class="flex bg-slate-300 gap-10 font-medium text-xl cursor-pointer select-none justify-center p-2">
         <!-- <ul class="bg-slate-400 p-2 rounded-md" @click="activeComponent = 'Cards'">CARD</ul>
         <ul class="bg-slate-400 p-2 rounded-md" @click="activeComponent = 'login'">LOGIN</ul> -->
-        <!-- <button class="bg-slate-400 p-2 rounded-md">add product</button> -->
+    <router-link to="/addProduct">
+        <button  class="bg-slate-400 p-2 rounded-md">add product</button>
+    </router-link>
+    <router-link to="/draganddrop">
+        <button class="bg-slate-400 p-2 rounded-md">Drag and drop</button>
+    </router-link>
         <!-- <div>
     <AddProductForm @add-product="addProduct" />
     <div class="product-list">

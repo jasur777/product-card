@@ -9,15 +9,27 @@
         <Card/>
         <Card/>
         <Card/>
-    </div>
+</div>
     
 </template>
 <script>
-import Card from '@/components/card.vue'
-import { defineComponent } from 'vue';
-export default defineComponent({
-    components:{
-        Card
-    }
-})
+import Card from '@/components/card.vue';
+import { ref } from 'vue';
+export default {
+  components: {
+    Card,
+  },
+  setup() {
+    const submittedData = ref(null);
+
+    const handleFormSubmission = (data) => {
+      submittedData.value = data;
+    };
+
+    return {
+      submittedData,
+      handleFormSubmission,
+    };
+  },
+};
 </script>

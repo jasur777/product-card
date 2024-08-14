@@ -4,12 +4,16 @@ import mainPage from '@/pages/mainPage.vue';
 import LoginPage from '@/components/login.vue';
 // import nav from '@/components/nav.vue';
 import cardsPage from '@/pages/cardsPage.vue';
+import AddProductPage  from '@/components/addProduct.vue';
+import draganddrop from '@/pages/draganddrop.vue';
 
 const routes = [
   // { path: '/', component: Home },
   { path: '/main', name: 'MainPage', component: mainPage, meta: { requiresAuth: true },},
   { path: '/', name: 'LoginPage', component: LoginPage },
-  { path: '/cardsPage', component: cardsPage }
+  { path: '/cardsPage', component: cardsPage },
+  { path: '/draganddrop', component: draganddrop },
+  { path: '/AddProduct', name: 'AddProductPage ',  component: AddProductPage  }, 
 ];
 
 // const router = createRouter({
