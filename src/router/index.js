@@ -1,34 +1,51 @@
 import { createRouter, createWebHistory } from 'vue-router';
-// import cardlist from '@/components/cardlist.vue';
 import mainPage from '@/pages/mainPage.vue';
-import LoginPage from '@/components/login.vue';
-// import nav from '@/components/nav.vue';
+import LoginPage from '@/pages/login.vue';
 import cardsPage from '@/pages/cardsPage.vue';
-import AddProductPage  from '@/components/addProduct.vue';
-import draganddrop from '@/pages/draganddrop.vue';
+import AddProductPage from '@/components/addProduct.vue';
 
 const routes = [
-  // { path: '/', component: Home },
-  { path: '/main', name: 'MainPage', component: mainPage, meta: { requiresAuth: true },},
-  { path: '/', name: 'LoginPage', component: LoginPage },
-  { path: '/cardsPage', component: cardsPage },
-  { path: '/draganddrop', component: draganddrop },
-  { path: '/AddProduct', name: 'AddProductPage ',  component: AddProductPage  }, 
+  { 
+    path: '/', 
+    name: 'LoginPage', 
+    component: LoginPage,
+    beforeEnter: (to, from, next) => {
+      const authToken = localStorage.getItem('authToken');
+      if (authToken) {
+        next({ name: 'MainPage' });
+      } else {
+        next();
+      }
+    }
+  },
+  { 
+    path: '/main', 
+    name: 'MainPage', 
+    component: mainPage,
+    meta: { requiresAuth: true }
+  },
+  { 
+    path: '/cardsPage', 
+    component: cardsPage, 
+    meta: { requiresAuth: true }
+  },
+  { 
+    path: '/AddProduct', 
+    name: 'AddProductPage',  
+    component: AddProductPage,
+    meta: { requiresAuth: true }
+  },
 ];
 
-// const router = createRouter({
-//   history: createWebHistory(),
-//   routes,
-// });
 const router = createRouter({
   history: createWebHistory(),
   routes,
 });
 
 router.beforeEach((to, from, next) => {
-  const loggedIn = localStorage.getItem('loggedIn');
-
-  if (to.matched.some(record => record.meta.requiresAuth) && !loggedIn) {
+  const authToken = localStorage.getItem('authToken');
+  
+  if (to.matched.some(record => record.meta.requiresAuth) && !authToken) {
     next({ name: 'LoginPage' });
   } else {
     next();

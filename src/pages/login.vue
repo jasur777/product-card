@@ -7,18 +7,31 @@ export default {
     const password = ref('');
     const router = useRouter();
     const showEye = ref(false);
+    
+    const showEyeToggle = () => {
+      showEye.value = !showEye.value;
+    };
+    const login = async () => {
+      const response = await fakeApiLogin(username.value, password.value);
 
-    const login = () => {
-      if (username.value === 'admin' && password.value === 'password') {
-        localStorage.setItem('loggedIn', 'true');
+      if (response.success) {
+        localStorage.setItem('authToken', response.token);
         router.push({ name: 'MainPage' });
       } else {
         alert('Invalid credentials');
       }
     };
-    
-    const showEyeToggle = () => {
-      showEye.value = !showEye.value;
+    const fakeApiLogin = async (username, password) => {
+      if (username === 'user' && password === 'password') {
+        return {
+          success: true,
+          token: 'fake-jwt-token'
+        };
+      } else {
+        return {
+          success: false
+        };
+      }
     };
     return {
       username,
